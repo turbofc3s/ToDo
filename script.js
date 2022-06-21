@@ -51,4 +51,14 @@ add.addEventListener('click', function() {
 	toDoContainer.appendChild(paragraph);
 	inputField.value = ""		
 
-})
+	
+let arrayOfToDo = [
+  {
+   value: inputField.value 
+   id: "DateNow()",
+   },
+   ]
+
+) 
+
+arrayOfTodos.push()
