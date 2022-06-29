@@ -35,30 +35,59 @@
 
 //input button with add label with an onclick tha does setItem (saves key value pairs in browser)
 //delete button with an onclick that
-let addToDo = document.getElementById('add');
-let inputField = document.getElementById('input');
-let todocontainer = document.getElementById('toDoContainer')
 
+
+// All of the dom elements
+let addToDo = document.getElementById('add');
+let inputField = document.getElementById('input');  
+let todocontainer = document.getElementById('toDoContainer')
+const todoForm = document.getElementById('form')// array for holding todos
+let todos = [];
+
+//prevent page from reloading when submitting the form
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 })
 
 
+// function to create a p element in html set the value to 
+// what is in the input field, fill the toDoContainer div and 
+// then update the value of the field with an empty string
 add.addEventListener('click', function() {
 	const paragraph = document.createElement('p')
+	const btn = document.createElement('button')
 	paragraph.innerText = inputField.value;
 	toDoContainer.appendChild(paragraph);
-	inputField.value = ""		
+	btn.innerText = ' delete'
+	paragraph.appendChild(btn);
+	
+	const todo = {
+		value: inputField.value,
+		id: Date.now()
+	}
+  
+	// add to todos array
+  	todos.push(todo)
+
+  	//right now the todo is an object to send to local browser it must be a string so use stringify
+  	const myJSON = JSON.stringify(todos);
+	localStorage.setItem("nTodos", myJSON);
+	let text = localStorage.getItem('nTodos');
+	if(text) {
+		todos = JSON.parse(text);
+	} else {
+		todo = []; 
+		console.log(todos)
+	}
+
+
+
+})
+
+
 
 	
-let arrayOfToDo = [
-  {
-   value: inputField.value 
-   id: "DateNow()",
-   },
-   ]
+ 
+   // addtoLocalStorage(todos) // store in local storage;
 
-) 
-
-arrayOfTodos.push()
