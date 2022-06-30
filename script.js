@@ -74,11 +74,11 @@ add.addEventListener('click', function() {
   	const myJSON = JSON.stringify(todos);
 	localStorage.setItem("nTodos", myJSON);
 	let text = localStorage.getItem('nTodos');
-	if(text) {
-		todos = JSON.parse(text);
+	if(text === null){
+		todos = [];
 	} else {
-		todo = []; 
-		console.log(todos)
+		todos = JSON.parse(text);
+
 	}
 
 
