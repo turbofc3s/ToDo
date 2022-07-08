@@ -44,6 +44,16 @@ let todocontainer = document.getElementById('toDoContainer')
 const todoForm = document.getElementById('form')// array for holding todos
 let todos = [];
 
+const myJSON = JSON.stringify(todos);
+localStorage.setItem("nTodos", myJSON);
+let text = localStorage.getItem('nTodos');
+if(text === null){
+	todos = [];
+} else {
+	todos = JSON.parse(text);
+	console.log(todos)
+}
+
 //prevent page from reloading when submitting the form
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
@@ -68,26 +78,15 @@ add.addEventListener('click', function() {
 	}
   
 	// add to todos array
-  	todos.push(todo)
-
-  	//right now the todo is an object to send to local browser it must be a string so use stringify
-  	const myJSON = JSON.stringify(todos);
-	localStorage.setItem("nTodos", myJSON);
-	let text = localStorage.getItem('nTodos');
-	if(text === null){
-		todos = [];
-	} else {
-		todos = JSON.parse(text);
-
-	}
-
-
-
+  	let stringOfTodos = localStorage.getItem('nTodos');
+  	let arrayOfTodos = JSON.parse(stringOfTodos);
+  	arrayOfTodos.push(todo)
+  	
+  	const myJSON = JSON.stringify(arrayOfTodos);
+    localStorage.setItem("nTodos", myJSON);
 })
 
 
 
 	
  
-   // addtoLocalStorage(todos) // store in local storage;
-
