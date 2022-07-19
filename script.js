@@ -42,16 +42,20 @@ let addToDo = document.getElementById('add');
 let inputField = document.getElementById('input');  
 let todocontainer = document.getElementById('toDoContainer')
 const todoForm = document.getElementById('form')// array for holding todos
-let todos = [];
+let arrayOfTodos = []
 
-const myJSON = JSON.stringify(todos);
-localStorage.setItem("nTodos", myJSON);
-let text = localStorage.getItem('nTodos');
-if(text === null){
-	todos = [];
-} else {
-	todos = JSON.parse(text);
-	console.log(todos)
+const myJSON = JSON.stringify(arrayOfTodos);
+localStorage.setItem('ntodos', myJSON);
+let text = localStorage.getItem('ntodos');
+if(arrayOfTodos.length > 0) {
+    for (let i = 0; i < arrayOfTodos[i]; i++) {
+   	  const paragraph = document.createElement('p')
+	  const btn = document.createElement('button')
+	  paragraph.innerText = arrayOfTodos[i].value
+	  toDoContainer.appendChild(paragraph) 
+	  btn.innerText = ' delete'
+	  paragraph.appendChild(btn);
+    }
 }
 
 //prevent page from reloading when submitting the form
@@ -80,13 +84,16 @@ add.addEventListener('click', function() {
 	// add to todos array
   	let stringOfTodos = localStorage.getItem('nTodos');
   	let arrayOfTodos = JSON.parse(stringOfTodos);
-  	arrayOfTodos.push(todo)
+  	arrayOfTodos.push(todo);
   	
   	const myJSON = JSON.stringify(arrayOfTodos);
     localStorage.setItem("nTodos", myJSON);
 })
 
+// add todos back to the ui
+  
 
 
-	
+
+	 
  
