@@ -42,13 +42,13 @@ let addToDo = document.getElementById('add');
 let inputField = document.getElementById('input');  
 let todocontainer = document.getElementById('toDoContainer')
 const todoForm = document.getElementById('form')// array for holding todos
-let arrayOfTodos = []
 
-const myJSON = JSON.stringify(arrayOfTodos);
-localStorage.setItem('ntodos', myJSON);
-let text = localStorage.getItem('ntodos');
+let textOfArray = localStorage.getItem('nTodos');
+let arrayOfTodos = JSON.parse(textOfArray)
+
+
 if(arrayOfTodos.length > 0) {
-    for (let i = 0; i < arrayOfTodos[i]; i++) {
+    for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const paragraph = document.createElement('p')
 	  const btn = document.createElement('button')
 	  paragraph.innerText = arrayOfTodos[i].value
@@ -89,11 +89,3 @@ add.addEventListener('click', function() {
   	const myJSON = JSON.stringify(arrayOfTodos);
     localStorage.setItem("nTodos", myJSON);
 })
-
-// add todos back to the ui
-  
-
-
-
-	 
- 
