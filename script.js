@@ -64,22 +64,33 @@ form.addEventListener('submit', (e) => {
 	e.preventDefault();
 })
 
+function deleteToDo(id) {
+	console.log(id)
 
+}
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
 // then update the value of the field with an empty string
 add.addEventListener('click', function() {
 	const paragraph = document.createElement('p')
-	const btn = document.createElement('button')
+	const deleteBtn = document.createElement('button')
 	paragraph.innerText = inputField.value;
 	toDoContainer.appendChild(paragraph);
-	btn.innerText = ' delete'
-	paragraph.appendChild(btn);
+	deleteBtn.innerText = ' delete'
+	deleteBtn.setAttribute('id', 'delete');
+	paragraph.appendChild(deleteBtn);
 	
+	const dateNow = Date.now();
+	deleteBtn.onclick = function() {
+		deleteToDo(dateNow) 
+	}	
+
 	const todo = {
 		value: inputField.value,
-		id: Date.now()
+		id: dateNow
 	}
+
+
   
 	// add to todos array
   	let stringOfTodos = localStorage.getItem('nTodos');
