@@ -75,9 +75,13 @@ function deleteToDo(id) {
 //     }
 // }
 for (let i = 0; i < arrayOfTodos.length; i++) {
-		if(arrayOfTodos[i].includes(id) ) {
-			localStorage.removeItem(arrayOfTodos[i])
-		}		
+		if(id === arrayOfTodos[i].id ) {
+			arrayOfTodos.slice(arrayOfTodos[i],1)
+			const myJSONS = JSON.stringify(arrayOfTodos);
+            localStorage.setItem("nTodos", myJSONS);
+
+
+				} 		
 	}
 	console.log('hi')	
    } 
