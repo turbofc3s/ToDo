@@ -47,7 +47,9 @@ let textOfArray = localStorage.getItem('nTodos');
 let arrayOfTodos = JSON.parse(textOfArray)
 
 
-if(arrayOfTodos.length > 0) {
+if(arrayOfTodos === null) {
+	arrayOfTodos = [];
+} else {
     for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const paragraph = document.createElement('p')
 	  const deleteBtn = document.createElement('button')
@@ -68,22 +70,15 @@ form.addEventListener('submit', (e) => {
 })
 
 function deleteToDo(id) {
-// 	for(var i in arrayOfTodos) {
-//         if(arrayOfTodos[i] == id) {
-//             delete arrayOfTodos[i];
-//         }
-//     }
-// }
-for (let i = 0; i < arrayOfTodos.length; i++) {
+  for (let i = 0; i < arrayOfTodos.length; i++) {
 		if(id === arrayOfTodos[i].id ) {
-			arrayOfTodos.slice(arrayOfTodos[i],1)
+			arrayOfTodos.splice(i, 1)
 			const myJSONS = JSON.stringify(arrayOfTodos);
             localStorage.setItem("nTodos", myJSONS);
-
-
+           
 				} 		
 	}
-	console.log('hi')	
+	
    } 
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
@@ -111,7 +106,11 @@ add.addEventListener('click', function() {
 	// add to todos array
   	let stringOfTodos = localStorage.getItem('nTodos');
   	let arrayOfTodos = JSON.parse(stringOfTodos);
-  	arrayOfTodos.push(todo);
+  	 if (arrayOfTodos === null) {
+  	 	arrayOfTodos = [];
+  	 } else {
+  	 	arrayOfTodos.push(todo);
+	  }	 	
   	
   	const myJSON = JSON.stringify(arrayOfTodos);
     localStorage.setItem("nTodos", myJSON);
