@@ -54,7 +54,8 @@ if(arrayOfTodos === null) {
    	  const paragraph = document.createElement('p')
 	  const deleteBtn = document.createElement('button')
 	  paragraph.innerText = arrayOfTodos[i].value
-	  toDoContainer.appendChild(paragraph) 
+	  paragraph.id = arrayOfTodos[i].id
+      toDoContainer.appendChild(paragraph) 
 	  deleteBtn.innerText = ' delete'
 	  paragraph.appendChild(deleteBtn);
 	  deleteBtn.onclick = function() {
@@ -66,32 +67,37 @@ if(arrayOfTodos === null) {
 //prevent page from reloading when submitting the form
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
-	e.preventDefault();
+e.preventDefault();
 })
 
 function deleteToDo(id) {
+  document.getElementById(id).remove(id)
   for (let i = 0; i < arrayOfTodos.length; i++) {
 		if(id === arrayOfTodos[i].id ) {
 			arrayOfTodos.splice(i, 1)
 			const myJSONS = JSON.stringify(arrayOfTodos);
             localStorage.setItem("nTodos", myJSONS);
-           
+            
+
 				} 		
-	}
+	} 
 	
    } 
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
 // then update the value of the field with an empty string
+
 add.addEventListener('click', function() {
 	const paragraph = document.createElement('p')
 	const deleteBtn = document.createElement('button')
+    const dateNow = Date.now();
 	paragraph.innerText = inputField.value;
+	paragraph.id = dateNow
 	toDoContainer.appendChild(paragraph);
 	deleteBtn.innerText = ' delete'
 	paragraph.appendChild(deleteBtn);
+	inputField.value = ""
 	
-	const dateNow = Date.now();
 	deleteBtn.onclick = function() {
 		deleteToDo(dateNow) 
 	}	
