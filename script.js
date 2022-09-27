@@ -38,6 +38,24 @@
 
 
 // All of the dom elements
+
+// const fetchTodos = () => {
+//     axios.get('C:/Users/alast/Desktop/module4-projects/ToDo-App/index.html')
+//         .then(response => {
+//             const todos = response.data.data;
+//             console.log(`GET list users`, todos);
+//         })
+//         .catch(error => console.error(error));
+// };
+
+// fetchTodos();
+
+
+
+
+
+
+
 let addToDo = document.getElementById('add');
 let inputField = document.getElementById('input');  
 let todocontainer = document.getElementById('toDoContainer')
@@ -71,16 +89,14 @@ e.preventDefault();
 })
 
 function deleteToDo(id) {
-  document.getElementById(id).remove(id)
+  
   for (let i = 0; i < arrayOfTodos.length; i++) {
 		if(id === arrayOfTodos[i].id ) {
 			arrayOfTodos.splice(i, 1)
 			const myJSONS = JSON.stringify(arrayOfTodos);
             localStorage.setItem("nTodos", myJSONS);
-            
-
-				} 		
-	} 
+            } 		
+	} document.getElementById(id).remove(id);
 	
    } 
 // function to create a p element in html set the value to 
@@ -96,7 +112,7 @@ add.addEventListener('click', function() {
 	toDoContainer.appendChild(paragraph);
 	deleteBtn.innerText = ' delete'
 	paragraph.appendChild(deleteBtn);
-	inputField.value = ""
+	
 	
 	deleteBtn.onclick = function() {
 		deleteToDo(dateNow) 
@@ -106,7 +122,6 @@ add.addEventListener('click', function() {
 		value: inputField.value,
 		id: dateNow
 	}
-
 
   
 	// add to todos array
