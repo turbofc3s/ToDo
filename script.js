@@ -135,4 +135,6 @@ add.addEventListener('click', function() {
   	
   	const myJSON = JSON.stringify(arrayOfTodos);
     localStorage.setItem("nTodos", myJSON);
+
+    inputField.value = "";
 })

@@ -1,0 +1,77 @@
+[33mcommit 7a91846d6c7ec66c8c884042e3640d6707a1a2de[m[33m ([m[1;36mHEAD -> [m[1;32mTodoApi[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Fri Sep 23 13:06:57 2022 -0400
+
+    finished todo
+
+[33mcommit fc765fb8420c94ec3b74d18aeb2c6c5e06c9f61a[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Wed Sep 21 22:35:09 2022 -0400
+
+    worked on the local storage for when a user first uses the app
+
+[33mcommit 9a5b191cbe3573f5f84d1d88d3cbca4c9efe90ee[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Mon Sep 19 16:19:35 2022 -0400
+
+    delete function
+
+[33mcommit c2f7e63d2cbd518f2ff2147d201b8a0be27cdf5b[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Fri Sep 16 11:16:03 2022 -0400
+
+    delete functionality problems
+
+[33mcommit 531fdece15310cfcf4cfde05468f65e2db1bdedf[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Tue Sep 13 21:11:02 2022 -0400
+
+    delete functionaliy
+
+[33mcommit 08731dd58622857594139aac16a9ff075c52a8a3[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Wed Jul 20 18:17:12 2022 -0400
+
+    app not working has been fixed
+
+[33mcommit e6d58bc2f26fd7ea2ea1dd5b312f4edf20b8c9ad[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Mon Jul 18 20:43:46 2022 -0400
+
+    updated code
+
+[33mcommit 6eb4b7611bf0b0308e1365c8c94966abec48ad6b[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Fri Jul 8 05:17:10 2022 -0400
+
+    updated files
+
+[33mcommit be044fad453163eda656068cd1f10646fd3d8ec5[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Wed Jun 29 20:57:55 2022 -0400
+
+    working on gettin item
+
+[33mcommit f007d848b454d5ba4af29efda27491289b0fee0b[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Wed Jun 29 06:25:56 2022 -0400
+
+    Add if statement
+
+[33mcommit 0220e73e40c6c84846a0fb102b46bd3244a41804[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Tue Jun 21 06:38:03 2022 -0400
+
+    added some script files
+
+[33mcommit e52fcf1d94f180272fe4a58b4b13f4525d772d50[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Thu Jun 16 05:42:01 2022 -0400
+
+    added the ability to input
+
+[33mcommit 6d4a731cd447a114e64cca168db21949605e0f00[m
+Author: jeffrey burke <burkejeffrey56@yahoo.com>
+Date:   Wed Jun 15 05:11:57 2022 -0400
+
+    added html, css, and js files
