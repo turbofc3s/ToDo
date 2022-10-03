@@ -47,8 +47,21 @@ let textOfArray = localStorage.getItem('nTodos');
 let arrayOfTodos = JSON.parse(textOfArray)
 
 
-if(arrayOfTodos === null) {
-	arrayOfTodos = [];
+if(textOfArray === null) {	
+    arrayOfTodos = [];
+	axios.get('https://jsonplaceholder.typicode.com/todos/')
+          .then(response => {
+              
+             let responseData = response.data 
+             
+
+              for (let i = 0; i < 5; i++){
+                arrayOfTodos.push(responseData[i]);
+              }
+          })
+          localStorage.setitem('ntodos', JSON.stringify(arrayOfTodos))
+
+
 } else {
     for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const paragraph = document.createElement('p')
@@ -96,16 +109,18 @@ add.addEventListener('click', function() {
 	toDoContainer.appendChild(paragraph);
 	deleteBtn.innerText = ' delete'
 	paragraph.appendChild(deleteBtn);
-	inputField.value = ""
+	
 	
 	deleteBtn.onclick = function() {
-		deleteToDo(dateNow) 
+		deleteToDo(dateNow)
+
+
 	}	
 
 	const todo = {
 		value: inputField.value,
 		id: dateNow
-	}
+			}
 
 
   
@@ -120,4 +135,5 @@ add.addEventListener('click', function() {
   	
   	const myJSON = JSON.stringify(arrayOfTodos);
     localStorage.setItem("nTodos", myJSON);
+    inputField.value = ""
 })
