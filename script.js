@@ -59,7 +59,7 @@ if(textOfArray === null) {
                 arrayOfTodos.push(responseData[i]);
               }
           })
-          localStorage.setitem('ntodos', JSON.stringify(arrayOfTodos))
+          localStorage.setItem('ntodos', JSON.stringify(arrayOfTodos))
 
 
 } else {
