@@ -47,11 +47,12 @@ let textOfArray = localStorage.getItem('nTodos');
 let arrayOfTodos = JSON.parse(textOfArray)
 
 
-if(textOfArray === null) {	
-    arrayOfTodos = [];
+if(arrayOfTodos === null) {	
+    
 	axios.get('https://jsonplaceholder.typicode.com/todos/')
           .then(response => {
-              
+              arrayOfTodos = []; 
+
              let responseData = response.data 
              
 
@@ -60,8 +61,6 @@ if(textOfArray === null) {
               }
           })
           localStorage.setItem('ntodos', JSON.stringify(arrayOfTodos))
-
-
 } else {
     for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const paragraph = document.createElement('p')
