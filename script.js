@@ -62,15 +62,14 @@ if(arrayOfTodos === null) {
 	          	// toDoContainer.appendChild(para)
 
           	const para = document.createElement('p')
-	        const deleteBt = document.createElement('button')
-	        para.innerText = responseData[i].title
-	        para.id = responseData[i].id
-            toDoContainer.appendChild(para) 
-	        deleteBt.innerText = ' delete'
-	        para.appendChild(deleteBt);
-	       
-	        deleteBt.onclick = function() {
-	  	    deleteToDo(responseData[i].id)
+	  const deleteBt = document.createElement('button')
+	  para.innerText = responseData[i].title
+	  para.id = responseData[i].id
+      toDoContainer.appendChild(para) 
+	  deleteBt.innerText = ' delete'
+	  para.appendChild(deleteBt);
+	  deleteBt.onclick = function() {
+	  	deleteToDo(responseData[i].id)
 	  }
     }
 
