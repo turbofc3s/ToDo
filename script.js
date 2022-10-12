@@ -56,22 +56,28 @@ if(arrayOfTodos === null) {
            	let responseData = response.data	
           
             for (let i = 0; i < 5; i++){
-          	  const para = document.createElement('p')
-          	  const deleteBt = document.createElement('button')
-	          para.innerText = responseData[i].title
-	          console.log(para.innerText)
-	          para.id = responseData[i].id
-              console.log(para.id)
-              toDoContainer.appendChild(para) 
-	          deleteBt.innerText = ' delete'
-	          para.appendChild(deleteBt);
-	           let arrays = arrayOfTodos.push(responseData[i].title)
-	         console.log(arrays)
-	          deleteBt.onclick = function() {
+          	  const paragraph = document.createElement('p')
+          	  const deleteBtn = document.createElement('button')
+	          paragraph.innerText = responseData[i].title
+	          console.log(paragraph.innerText)
+	          paragraph.id = responseData[i].id
+              console.log(paragraph.id)
+              toDoContainer.appendChild(paragraph) 
+	          deleteBtn.innerText = ' delete'
+	          paragraph.appendChild(deleteBtn);
+	         
+	         
+	          deleteBtn.onclick = function() {
 	  	        deleteToDo(responseData[i].id)
 	  }
-	 let local =  localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
-	 console.log(local)
+
+	  const todos = {
+		value: responseData[i].title,
+		id: responseData[i].id
+	}
+	 arrayOfTodos.push(todos)
+	 localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+	
     }
 
               
