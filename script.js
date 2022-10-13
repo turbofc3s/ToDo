@@ -46,43 +46,44 @@ const todoForm = document.getElementById('form')// array for holding todos
 let textOfArray = localStorage.getItem('nTodos');
 let arrayOfTodos = JSON.parse(textOfArray)
 
+function setLocalStorage() {
+   	       localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+          }	
 
 if(arrayOfTodos === null) {
   	 
   	axios.get('https://jsonplaceholder.typicode.com/todos/')
-          .then(response => {
-
-          	arrayOfTodos = []; 
-           	let responseData = response.data	
+      .then(response => {
+        arrayOfTodos = []; 
+        let responseData = response.data	
           
-            for (let i = 0; i < 5; i++){
-          	  const paragraph = document.createElement('p')
-          	  const deleteBtn = document.createElement('button')
-	          paragraph.innerText = responseData[i].title
-	          console.log(paragraph.innerText)
-	          paragraph.id = responseData[i].id
-              console.log(paragraph.id)
-              toDoContainer.appendChild(paragraph) 
-	          deleteBtn.innerText = ' delete'
-	          paragraph.appendChild(deleteBtn);
+        for (let i = 0; i < 5; i++){
+          const paragraph = document.createElement('p')
+          const deleteBtn = document.createElement('button')
+	      paragraph.innerText = responseData[i].title
+	      paragraph.id = responseData[i].id
+          toDoContainer.appendChild(paragraph) 
+	      deleteBtn.innerText = ' delete'
+	      paragraph.appendChild(deleteBtn);
 	         
-	         
-	          deleteBtn.onclick = function() {
-	  	        deleteToDo(responseData[i].id)
-	  }
+	      deleteBtn.onclick = function() {
+	  	    deleteToDo(responseData[i].id)
+	      }
+   
+	      const todos = {
+		    value: responseData[i].title,
+		    id: responseData[i].id
+	      }
+	      
+	      arrayOfTodos.push(todos)
+	      setLocalStorage()
+	     
+	      // function setLocalStorage() {
+   	   //     localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+       //    }	
+        }
 
-	  const todos = {
-		value: responseData[i].title,
-		id: responseData[i].id
-	}
-	 arrayOfTodos.push(todos)
-	 localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
-	
-    }
-
-              
-          })
-          
+    })          
 } else {
     for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const paragraph = document.createElement('p')
@@ -92,6 +93,7 @@ if(arrayOfTodos === null) {
       toDoContainer.appendChild(paragraph) 
 	  deleteBtn.innerText = ' delete'
 	  paragraph.appendChild(deleteBtn);
+	  
 	  deleteBtn.onclick = function() {
 	  	deleteToDo(arrayOfTodos[i].id)
 	  }
@@ -106,53 +108,60 @@ e.preventDefault();
 
 function deleteToDo(id) {
   document.getElementById(id).remove(id)
-  for (let i = 0; i < arrayOfTodos.length; i++) {
-		if(id === arrayOfTodos[i].id ) {
-			arrayOfTodos.splice(i, 1)
-			const myJSONS = JSON.stringify(arrayOfTodos);
-            localStorage.setItem("nTodos", myJSONS);
-            
-
-				} 		
+    for (let i = 0; i < arrayOfTodos.length; i++) {
+	  if(id === arrayOfTodos[i].id ) {
+		arrayOfTodos.splice(i, 1)
+		setLocalStorage()
+	  } 		
 	} 
 	
-   } 
+} 
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
 // then update the value of the field with an empty string
 
+
 add.addEventListener('click', function() {
-	const paragraph = document.createElement('p')
-	const deleteBtn = document.createElement('button')
-    const dateNow = Date.now();
-	paragraph.innerText = inputField.value;
-	paragraph.id = dateNow
-	toDoContainer.appendChild(paragraph);
-	deleteBtn.innerText = ' delete'
-	paragraph.appendChild(deleteBtn);
-	
-	
-	deleteBtn.onclick = function() {
-		deleteToDo(dateNow) 
-	}	
-
-	const todo = {
-		value: inputField.value,
-		id: dateNow
-	}
-
-
+  const dateNow = Date.now();
+  console.log(dateNow)
+  const todo = inputField.value;
+  console.log(todo)
+  addToUi(todo, dateNow);
   
-	// add to todos array
-  	let stringOfTodos = localStorage.getItem('nTodos');
-  	let arrayOfTodos = JSON.parse(stringOfTodos);
-  	 if (arrayOfTodos === null) {
-  	 	arrayOfTodos = [];
-  	 } else {
-  	 	arrayOfTodos.push(todo);
-	  }	 	
-  	
-  	const myJSON = JSON.stringify(arrayOfTodos);
-    localStorage.setItem("nTodos", myJSON);
+  const newTodo = {
+    value: todo,
+    id: dateNow
+  }
+  
+    console.log(newTodo)
+  
+  function addToUi(todo, id) {
+      const paragraph = document.createElement('p')
+      const deleteBtn = document.createElement('button')
+
+      paragraph.innerText = todo;
+      paragraph.id = id
+      toDoContainer.appendChild(paragraph);
+      deleteBtn.innerText = ' delete'
+      paragraph.appendChild(deleteBtn);
+        
+      deleteBtn.onclick = function() {
+        deleteToDo(id) 
+      }    
+    }
+
+  // add to todos array
+    let stringOfTodos = localStorage.getItem('nTodos');
+    let arrayOfTodos = JSON.parse(stringOfTodos);
+      if (arrayOfTodos === null) {
+      arrayOfTodos = [];
+      } else {
+      arrayOfTodos.push(newTodo);
+    }   
+    
+    setLocalStorage()
+   
     inputField.value = ""
 })
+
+					  -->
