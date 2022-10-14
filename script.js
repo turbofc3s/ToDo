@@ -9,6 +9,34 @@
 
 // Also, you can use JavaScript to add an "onclick" attribute to elements you're using JavaScript to create. This may be of note when thinking of how to delete the todo element. 
 
+
+
+// Set Item
+//for Todos to store
+// localStorage.setItem("firstname", 'Rachel');
+//get item
+//document.getElementById('demo').innerHTML = localStorage.getItem('firstname');
+
+//When sending data to a web server, the data has to be a string.
+
+
+//stringify is converting arrays into strings and object is an array
+// const arr = ["John", "Peter", "Sally", "Jane"];
+// const myJSON = JSON.stringify(arr);
+// ["John","Peter","Sally","Jane"]
+
+//parse is converting string into an object
+// '{"name":"John", "age":30, "city":"New York"}'
+// const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+
+// as a user deletes something in the todo list this should be used to
+// make sure it is deleted from localStorage
+// localStorage.removeItem(key);
+
+//input button with add label with an onclick tha does setItem (saves key value pairs in browser)
+//delete button with an onclick that
+
+
 // All of the dom elements
 let addToDo = document.getElementById('add');
 let inputField = document.getElementById('input');  
@@ -17,10 +45,6 @@ const todoForm = document.getElementById('form')// array for holding todos
 
 let textOfArray = localStorage.getItem('nTodos');
 let arrayOfTodos = JSON.parse(textOfArray)
-
-// function setLocalStorage() {
-//    	       localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
-//           }	
 
 if(arrayOfTodos === null) {
   	 
@@ -39,10 +63,10 @@ if(arrayOfTodos === null) {
 		    id: rId
 	      }
 
-	      arrayOfTodos.push(todos)
-	      localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+	    // arrayOfTodos.push(todos)
+	    // localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
         }
-    })          
+    })
 } else {
     for (let i = 0; i < arrayOfTodos.length; i++) {
    	  const todoValue = arrayOfTodos[i].value;
@@ -57,6 +81,7 @@ if(arrayOfTodos === null) {
 }
 
 //prevent page from reloading when submitting the form
+
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
 e.preventDefault();
@@ -75,6 +100,10 @@ function deleteToDo(id) {
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
 // then update the value of the field with an empty string
+// function setLocalStorage() {
+//   localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+// }	
+
 
 function addToUi(todo, id) {
   const paragraph = document.createElement('p')
@@ -107,7 +136,7 @@ add.addEventListener('click', function() {
      if (arrayOfTodos === null) {
       arrayOfTodos = [];
      } else {
-      arrayOfTodos.push(newTodo);
+      arrayOfTodos.push(newTodo)
      }   
       // setLocalStorage()
    localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
