@@ -58,22 +58,26 @@ if(arrayOfTodos === null) {
         let responseData = response.data	
           
         for (let i = 0; i < 5; i++){
-          const paragraph = document.createElement('p')
-          const deleteBtn = document.createElement('button')
-	      paragraph.innerText = responseData[i].title
-	      paragraph.id = responseData[i].id
-          toDoContainer.appendChild(paragraph) 
-	      deleteBtn.innerText = ' delete'
-	      paragraph.appendChild(deleteBtn);
+          const rTitle = responseData[i].title;
+          const rId = responseData[i].id;
+          addToUi(rTitle, rId);
+
+          const todos = {
+		    value: rTtitle,
+		    id: rId
+	      }
+
+	      // const paragraph = document.createElement('p')
+       //    const deleteBtn = document.createElement('button')
+	      // paragraph.innerText = responseData[i].title
+	      // paragraph.id = responseData[i].id
+       //    toDoContainer.appendChild(paragraph) 
+	      // deleteBtn.innerText = ' delete'
+	      // paragraph.appendChild(deleteBtn);
 	         
-	      deleteBtn.onclick = function() {
-	  	    deleteToDo(responseData[i].id)
-	      }
-   
-	      const todos = {
-		    value: responseData[i].title,
-		    id: responseData[i].id
-	      }
+	      // deleteBtn.onclick = function() {
+	  	   //  deleteToDo(responseData[i].id)
+	      // }      
 	      
 	      arrayOfTodos.push(todos)
 	      setLocalStorage()
@@ -123,9 +127,7 @@ function deleteToDo(id) {
 
 add.addEventListener('click', function() {
   const dateNow = Date.now();
-  console.log(dateNow)
   const todo = inputField.value;
-  console.log(todo)
   addToUi(todo, dateNow);
   
   const newTodo = {
@@ -133,9 +135,7 @@ add.addEventListener('click', function() {
     id: dateNow
   }
   
-    console.log(newTodo)
-  
-  function addToUi(todo, id) {
+    function addToUi(todo, id) {
       const paragraph = document.createElement('p')
       const deleteBtn = document.createElement('button')
 
