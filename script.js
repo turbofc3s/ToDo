@@ -63,7 +63,8 @@ if(arrayOfTodos === null) {
 		    id: rId
 	      }
 
-	    // arrayOfTodos.push(todos)
+	    arrayOfTodos.push(todos)
+	   setLocalStorage(arrayOfTodos)
 	    // localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
         }
     })
@@ -92,17 +93,17 @@ function deleteToDo(id) {
     for (let i = 0; i < arrayOfTodos.length; i++) {
 	  if(id === arrayOfTodos[i].id ) {
 		arrayOfTodos.splice(i, 1)
-		// setLocalStorage()
-		localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+		setLocalStorage(arrayOfTodos)
+		// localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
 	  } 		
 	} 	
 } 
 // function to create a p element in html set the value to 
 // what is in the input field, fill the toDoContainer div and 
 // then update the value of the field with an empty string
-// function setLocalStorage() {
-//   localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
-// }	
+function setLocalStorage( array) {
+  localStorage.setItem('nTodos', JSON.stringify(array))
+}	
 
 
 function addToUi(todo, id) {
@@ -138,8 +139,8 @@ add.addEventListener('click', function() {
      } else {
       arrayOfTodos.push(newTodo)
      }   
-      // setLocalStorage()
-   localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
+      setLocalStorage(arrayOfTodos)
+   // localStorage.setItem('nTodos', JSON.stringify(arrayOfTodos))
    inputField.value = ""
 })
 
